@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Karla:wght@700&display=swap');
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.app {
+    background-color: #0B2434;
+    position: absolute;
+    width: 360px;
+    height: 379px;
+    left: 76px;
+    top: 69px;
+
+}
+
+.main-el {
+
+
+position: absolute;
+width: 320px;
+height: 320px;
+left: 20px;
+top: 30px;
+background: #F5F5F5;
+border-radius: 10px;
+text-align: center;
+font-family: Karla;
+}
+
