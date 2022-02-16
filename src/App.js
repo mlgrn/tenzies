@@ -13,7 +13,9 @@ export default function App() {
         const randomArr = []
     // loops over randomArr and returns it with 10 random numbers in the array
         for (let i = 0; i < 10; i++) {
-            randomArr.push({value: Math.floor(Math.random()* 6 + 1), isHeld: false, id: nanoid()}) 
+            randomArr.push({value: Math.floor(Math.random()* 6 + 1), 
+                isHeld: false, 
+                id: nanoid()}) 
                 
             
         }
@@ -21,7 +23,17 @@ export default function App() {
         return randomArr
     }
 
-    
+    // allows the dice to be held by flipping the value of isHeld to true
+    function holdDice(id) {
+            setNum((oldDice) => oldDice.map(die => {
+                return die.id === id ? 
+                {...die, isHeld: !die.isHeld} 
+                : die
+            }
+               
+            )
+            )  
+    }
  
     // set state and immediately call allNewDice function to get set up
     const [num, setNum] = React.useState(allNewDice())
@@ -29,7 +41,13 @@ export default function App() {
   
     function newRoll() {
         
-        setNum(allNewDice())
+        setNum(oldDice => oldDice.map(die => {
+            return die.isHeld ? 
+            die
+            : {value: Math.floor(Math.random()* 6 + 1), 
+            isHeld: false, 
+            id: nanoid()}
+        }))
     }
     
 
@@ -38,15 +56,15 @@ export default function App() {
     //a new array, diceElements, which contains <Dice/> 
     // components, rendered with the corresponding value prop
     const diceElements = num.map((x)=>{
-        return <Dice value={x.value} key={x.id}/>
+        return <Dice value={x.value} key={x.id} isHeld={x.isHeld} holdDice={()=> holdDice(x.id)}/>
     })
-    
 
 
     return (
     <div className="app">
         <main className="main-el">
             <h1>Tenzies</h1>
+            <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls</p>
         <div className="dice-wrap">
              {diceElements}
         </div>
