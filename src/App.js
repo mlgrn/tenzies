@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import "./style.css"
 import Dice from "./components/Dice"
 import {nanoid} from "nanoid"
@@ -38,6 +38,11 @@ export default function App() {
     // set state and immediately call allNewDice function to get set up
     const [num, setNum] = React.useState(allNewDice())
 
+    const [tenzies, setTenzies] = React.useState(false)
+
+    useEffect(()=>{
+       
+    }, [num])
   
     function newRoll() {
         
