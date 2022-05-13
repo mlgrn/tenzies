@@ -1,5 +1,5 @@
 # Tenzies game made with Create React App
 
-![Tenzies Screenshot](tenzies/tenzies game screenshot.png "Tenzies Screenshot")
+![Image](tenzies/tenzies game screenshot.png)
 
 Nanoid much be installed for keys to work.
